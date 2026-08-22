@@ -12,7 +12,7 @@ interface HeroProps {
 
 export default function Hero({ onSearchSubmit, onBookClick }: HeroProps) {
   return (
-    <div className="relative w-full min-h-[62vh] md:min-h-screen flex flex-col justify-between overflow-visible pb-6 md:pb-8 bg-zinc-950 font-sans select-none">
+    <div className="relative w-full min-h-[75vh] md:min-h-screen flex flex-col justify-between overflow-visible pb-8 md:pb-8 bg-zinc-950 font-sans select-none">
       
       {/* Background Hero Images */}
       <div className="absolute inset-0 z-0 pointer-events-none">
@@ -33,14 +33,14 @@ export default function Hero({ onSearchSubmit, onBookClick }: HeroProps) {
           className="hidden sm:block object-cover object-center brightness-[0.9]"
         />
         {/* Soft Gradient Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30 sm:to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-black/30 sm:to-transparent" />
       </div>
 
       {/* Integrated Navbar */}
       <Navbar onBookClick={onBookClick} />
 
       {/* Main Hero Headline Section */}
-      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 pt-28 md:pt-36 pb-4 md:pb-8 flex-1 flex flex-col justify-center items-start w-full">
+      <div className="relative z-10 max-w-7xl mx-auto px-5 sm:px-6 lg:px-12 pt-24 sm:pt-28 md:pt-36 pb-4 md:pb-8 flex-1 flex flex-col justify-center items-start w-full">
         <div className="max-w-2xl space-y-3 sm:space-y-4">
           <h1 className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tight text-white leading-[1.15] sm:leading-[1.1] drop-shadow-lg">
             Rent a Car for Every Journey
@@ -52,13 +52,13 @@ export default function Hero({ onSearchSubmit, onBookClick }: HeroProps) {
         </div>
       </div>
 
-      {/* DESKTOP SEARCH WIDGET: Sits INSIDE Hero Section at bottom */}
+      {/* DESKTOP SEARCH WIDGET */}
       <div className="hidden md:block relative z-40 w-full px-6 lg:px-12 pb-8 overflow-visible">
         <SearchWidget onSearch={onSearchSubmit} />
       </div>
 
-      {/* MOBILE SEARCH WIDGET: Overlapping half on Hero banner */}
-      <div className="md:hidden relative z-40 max-w-7xl mx-auto px-4 -mb-16 overflow-visible">
+      {/* MOBILE SEARCH WIDGET */}
+      <div className="md:hidden relative z-40 w-full px-4 pt-2 pb-4 overflow-visible">
         <SearchWidget onSearch={onSearchSubmit} />
       </div>
 

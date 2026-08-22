@@ -49,7 +49,6 @@ const TIMES = [
   "08:30 PM",
 ];
 
-// MONTH NAMES & DAYS OF WEEK
 const MONTH_NAMES = [
   "January", "February", "March", "April", "May", "June",
   "July", "August", "September", "October", "November", "December"
@@ -78,7 +77,7 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
   const [pickTimeOpen, setPickTimeOpen] = useState(false);
   const [retTimeOpen, setRetTimeOpen] = useState(false);
 
-  // Calendar View State (Month/Year)
+  // Calendar View State
   const [calMonth, setCalMonth] = useState(7); // August (0-indexed)
   const [calYear, setCalYear] = useState(2026);
 
@@ -124,7 +123,7 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
     });
   };
 
-  // Helper to format date for display: "25 Aug 2026"
+  // Format date display: "25 Aug 2026"
   const formatDateDisplay = (dateStr: string) => {
     if (!dateStr) return "Select date";
     const [y, m, d] = dateStr.split("-").map(Number);
@@ -137,7 +136,6 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
     });
   };
 
-  // Calendar Days Generator
   const getDaysInMonth = (year: number, month: number) => {
     return new Date(year, month + 1, 0).getDate();
   };
@@ -193,8 +191,7 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
     }
 
     return (
-      <div className="absolute top-full left-0 mt-2 w-72 bg-white border border-neutral-200 rounded-2xl shadow-2xl z-50 p-4 animate-in fade-in slide-in-from-top-3 duration-200 ease-out font-sans">
-        {/* Calendar Month Header */}
+      <div className="absolute top-full left-1/2 -translate-x-1/2 md:left-0 md:translate-x-0 mt-2 w-72 bg-white border border-neutral-200 rounded-2xl shadow-2xl z-50 p-4 animate-in fade-in slide-in-from-top-3 duration-200 ease-out font-sans">
         <div className="flex items-center justify-between pb-3 mb-2 border-b border-neutral-100">
           <span className="text-xs font-bold text-neutral-900">
             {MONTH_NAMES[calMonth]} {calYear}
@@ -231,7 +228,6 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
           </div>
         </div>
 
-        {/* Days of Week */}
         <div className="grid grid-cols-7 gap-1 text-center mb-1">
           {DAYS_OF_WEEK.map((dw) => (
             <span key={dw} className="text-[11px] font-semibold text-neutral-400">
@@ -240,7 +236,6 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
           ))}
         </div>
 
-        {/* Grid Days */}
         <div className="grid grid-cols-7 gap-1">{days}</div>
       </div>
     );
@@ -249,21 +244,21 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
   return (
     <div
       ref={containerRef}
-      className="relative z-50 w-full max-w-5xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 shadow-2xl border border-white/60 text-neutral-900 transition-all font-sans"
+      className="relative z-50 w-full max-w-5xl mx-auto bg-white/95 backdrop-blur-md rounded-2xl md:rounded-3xl p-4 sm:p-5 md:p-6 shadow-2xl border border-white/80 text-neutral-900 transition-all font-sans"
     >
-      <form onSubmit={handleSubmit} className="flex flex-col gap-5">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-4 sm:gap-5">
         
-        {/* Top Input Row (4 Horizontal Columns) */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Top Input Row */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3.5 sm:gap-4">
           
           {/* 1. Departure Location */}
-          <div className="relative flex flex-col gap-1.5 z-40">
+          <div className={`relative flex flex-col gap-1 ${depDropdownOpen ? "z-[100]" : "z-40"}`}>
             <div className="flex items-center justify-between">
-              <label className="text-xs font-semibold text-neutral-600">
+              <label className="text-[11px] sm:text-xs font-semibold text-neutral-600">
                 Departure
               </label>
               <div className="flex items-center gap-1.5">
-                <span className="text-[11px] font-medium text-neutral-500">
+                <span className="text-[10px] sm:text-[11px] font-medium text-neutral-500">
                   Round-trip?
                 </span>
                 <button
@@ -291,7 +286,7 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
                   closeAllPopovers();
                   setDepDropdownOpen(!depDropdownOpen);
                 }}
-                className="w-full flex items-center justify-between bg-neutral-100 hover:bg-neutral-100/80 rounded-xl px-3.5 py-3 text-left transition-colors cursor-pointer"
+                className="w-full flex items-center justify-between bg-neutral-100 hover:bg-neutral-100/80 rounded-xl px-3 py-2.5 sm:py-3 text-left transition-colors cursor-pointer"
               >
                 <div className="flex items-center gap-2 overflow-hidden">
                   <IconMapPin className="w-4 h-4 text-neutral-400 shrink-0" />
@@ -327,8 +322,8 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
           </div>
 
           {/* 2. Return Location */}
-          <div className="relative flex flex-col gap-1.5 z-40">
-            <label className="text-xs font-semibold text-neutral-600">
+          <div className={`relative flex flex-col gap-1 ${retDropdownOpen ? "z-[100]" : "z-30"}`}>
+            <label className="text-[11px] sm:text-xs font-semibold text-neutral-600">
               Return Location
             </label>
             <div className="relative">
@@ -339,7 +334,7 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
                   closeAllPopovers();
                   setRetDropdownOpen(!retDropdownOpen);
                 }}
-                className={`w-full flex items-center justify-between bg-neutral-100 rounded-xl px-3.5 py-3 text-left transition-colors cursor-pointer ${
+                className={`w-full flex items-center justify-between bg-neutral-100 rounded-xl px-3 py-2.5 sm:py-3 text-left transition-colors cursor-pointer ${
                   !isRoundTrip ? "opacity-50 cursor-not-allowed" : "hover:bg-neutral-100/80"
                 }`}
               >
@@ -375,14 +370,13 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
             </div>
           </div>
 
-          {/* 3. Pick Up Date & Time (Modern Custom Calendar) */}
-          <div className="relative flex flex-col gap-1.5 z-40">
-            <label className="text-xs font-semibold text-neutral-600">
+          {/* 3. Pick Up Date & Time */}
+          <div className={`relative flex flex-col gap-1 ${pickCalendarOpen || pickTimeOpen ? "z-[100]" : "z-20"}`}>
+            <label className="text-[11px] sm:text-xs font-semibold text-neutral-600">
               Pick Up Date & Time
             </label>
-            <div className="flex items-center justify-between bg-neutral-100 rounded-xl px-3 py-2">
+            <div className="flex items-center justify-between bg-neutral-100 rounded-xl px-3 py-2.5">
               
-              {/* Modern Calendar Trigger */}
               <button
                 type="button"
                 onClick={() => {
@@ -399,7 +393,6 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
 
               <span className="text-neutral-300 mx-1.5">|</span>
 
-              {/* Time Dropdown */}
               <div className="relative shrink-0">
                 <button
                   type="button"
@@ -439,14 +432,13 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
             </div>
           </div>
 
-          {/* 4. Return Date & Time (Modern Custom Calendar) */}
-          <div className="relative flex flex-col gap-1.5 z-40">
-            <label className="text-xs font-semibold text-neutral-600">
+          {/* 4. Return Date & Time */}
+          <div className={`relative flex flex-col gap-1 ${retCalendarOpen || retTimeOpen ? "z-[100]" : "z-10"}`}>
+            <label className="text-[11px] sm:text-xs font-semibold text-neutral-600">
               Return Date & Time
             </label>
-            <div className="flex items-center justify-between bg-neutral-100 rounded-xl px-3 py-2">
+            <div className="flex items-center justify-between bg-neutral-100 rounded-xl px-3 py-2.5">
               
-              {/* Modern Calendar Trigger */}
               <button
                 type="button"
                 onClick={() => {
@@ -463,7 +455,6 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
 
               <span className="text-neutral-300 mx-1.5">|</span>
 
-              {/* Time Dropdown */}
               <div className="relative shrink-0">
                 <button
                   type="button"
@@ -505,21 +496,18 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
 
         </div>
 
-        {/* Bottom Row: Filter Pills (Left) & Search Button (Right) */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-1">
+        {/* Bottom Row: Mobile Segmented Filter & Search Button */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3 pt-1">
           
-          {/* Driver Filter Toggle Pills */}
-          <div className="flex items-center gap-2">
-            <span className="text-xs font-medium text-neutral-500 mr-1">
-              Filter:
-            </span>
+          {/* Driver Filter Toggle Segment Bar */}
+          <div className="flex items-center gap-1.5 bg-neutral-100 p-1 rounded-xl">
             <button
               type="button"
               onClick={() => setDriverType("without_driver")}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+              className={`flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center ${
                 driverType === "without_driver"
                   ? "bg-neutral-950 text-white shadow-xs"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                  : "text-neutral-600 hover:text-neutral-900"
               }`}
             >
               Without Driver
@@ -527,10 +515,10 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
             <button
               type="button"
               onClick={() => setDriverType("with_driver")}
-              className={`px-4 py-2 rounded-full text-xs font-medium transition-colors cursor-pointer ${
+              className={`flex-1 sm:flex-none px-3.5 py-2 rounded-lg text-xs font-semibold transition-all cursor-pointer text-center ${
                 driverType === "with_driver"
                   ? "bg-neutral-950 text-white shadow-xs"
-                  : "bg-neutral-100 text-neutral-700 hover:bg-neutral-200"
+                  : "text-neutral-600 hover:text-neutral-900"
               }`}
             >
               With Driver
@@ -540,9 +528,9 @@ export default function SearchWidget({ onSearch }: SearchWidgetProps) {
           {/* Search Button */}
           <button
             type="submit"
-            className="flex items-center justify-center gap-2 bg-neutral-950 hover:bg-neutral-800 text-white font-medium text-xs md:text-sm px-6 py-3 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 bg-neutral-950 hover:bg-neutral-800 text-white font-bold text-xs sm:text-sm px-7 py-3.5 rounded-xl transition-all shadow-md active:scale-95 cursor-pointer"
           >
-            <span>Search</span>
+            <span>Search Cars</span>
             <IconArrowRight className="w-4 h-4" />
           </button>
         </div>

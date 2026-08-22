@@ -64,7 +64,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-900">
               Fleet Categories
             </h4>
-            <ul className="space-y-2 text-xs text-neutral-600 font-medium">
+            <ul className="space-y-2 text-xs text-neutral-600 font-normal">
               <li><Link href="/cars?category=Economy" className="hover:text-neutral-900 transition-colors">Economy Hatchbacks</Link></li>
               <li><Link href="/cars?category=SUV" className="hover:text-neutral-900 transition-colors">SUVs & 4x4 Offroaders</Link></li>
               <li><Link href="/cars?category=Sedan" className="hover:text-neutral-900 transition-colors">Executive Sedans</Link></li>
@@ -78,7 +78,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-900">
               Top Locations
             </h4>
-            <ul className="space-y-2 text-xs text-neutral-600 font-medium">
+            <ul className="space-y-2 text-xs text-neutral-600 font-normal">
               <li><Link href="/cars" className="hover:text-neutral-900 transition-colors">Mumbai & Airport</Link></li>
               <li><Link href="/cars" className="hover:text-neutral-900 transition-colors">Pune City & Baner</Link></li>
               <li><Link href="/cars" className="hover:text-neutral-900 transition-colors">Goa Airport & Panjim</Link></li>
@@ -92,7 +92,7 @@ export default function Footer() {
             <h4 className="text-xs font-bold uppercase tracking-widest text-neutral-900">
               Company & Help
             </h4>
-            <ul className="space-y-2 text-xs text-neutral-600 font-medium">
+            <ul className="space-y-2 text-xs text-neutral-600 font-normal">
               <li><Link href="/#how-it-works" className="hover:text-neutral-900 transition-colors">How It Works</Link></li>
               <li><Link href="/#why-choose-us" className="hover:text-neutral-900 transition-colors">Why Choose Us</Link></li>
               <li><Link href="/#faq" className="hover:text-neutral-900 transition-colors">FAQ & Support</Link></li>
