@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState } from "react";
-import { IconChevronDown, IconHelpCircle, IconBrandWhatsapp, IconHeadset } from "@tabler/icons-react";
+import { IconChevronDown } from "@tabler/icons-react";
 
 interface FaqItem {
   question: string;
@@ -47,71 +47,63 @@ export default function FaqSection() {
   };
 
   return (
-    <section id="faq" className="w-full py-16 sm:py-24 bg-neutral-50 text-neutral-900 font-sans border-t border-neutral-200 select-none">
+    <section id="faq" className="w-full py-16 sm:py-24 bg-white text-neutral-900 font-sans border-t border-neutral-200 select-none">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
-        {/* 2-COLUMN LAYOUT: LEFT SIDE TEXT CONTENT, RIGHT SIDE ACCORDION */}
+        {/* 2-COLUMN LAYOUT: LEFT SIDE TEXT CONTENT, RIGHT SIDE CLEAN BORDERLESS FAQ LIST */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
           
-          {/* LEFT SIDE TEXT & HELPDESK CARD */}
-          <div className="lg:col-span-5 space-y-6 lg:sticky lg:top-28">
-           
-
+          {/* LEFT SIDE TEXT CONTENT */}
+          <div className="lg:col-span-5 space-y-5 lg:sticky lg:top-28">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold tracking-tight text-neutral-900 leading-[1.15]">
               Got questions? <br />
               <span className="text-neutral-500 font-normal">We've got answers.</span>
             </h2>
 
-            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md">
-              Everything you need to know about required documents, zero deposit waivers, insurance coverage, and 24/7 doorstep vehicle delivery.
+            <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed max-w-md font-normal">
+              Everything you need to know about required documents, zero deposit waivers, commercial insurance coverage, and 24/7 doorstep vehicle delivery.
             </p>
-
-           
           </div>
 
-          {/* RIGHT SIDE EXPANDABLE ACCORDIONS WITH SMOOTH ANIMATION */}
-          <div className="lg:col-span-7 space-y-3.5">
+          {/* RIGHT SIDE BORDERLESS & BACKGROUND-FREE EXPANDABLE FAQ LIST */}
+          <div className="lg:col-span-7 divide-y divide-neutral-200/80">
             {FAQS.map((faq, idx) => {
               const isOpen = openIndex === idx;
 
               return (
                 <div
                   key={faq.question}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    isOpen
-                      ? "bg-white border-neutral-900/40 shadow-md translate-x-1"
-                      : "bg-white/80 border-neutral-200 hover:border-neutral-300 hover:bg-white"
-                  }`}
+                  className="py-4 sm:py-5 transition-all duration-300"
                 >
-                  {/* Accordion Header */}
+                  {/* Question Trigger */}
                   <button
                     onClick={() => toggleFaq(idx)}
-                    className="w-full py-4.5 px-6 flex items-center justify-between gap-4 text-left cursor-pointer focus:outline-none"
+                    className="w-full flex items-center justify-between gap-4 text-left cursor-pointer focus:outline-none group py-1"
                   >
                     <span className={`text-base sm:text-lg font-bold tracking-tight transition-colors ${
-                      isOpen ? "text-neutral-900" : "text-neutral-800"
+                      isOpen ? "text-neutral-900" : "text-neutral-700 group-hover:text-neutral-950"
                     }`}>
                       {faq.question}
                     </span>
 
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
+                      className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 transition-transform duration-300 ${
                         isOpen
-                          ? "bg-neutral-900 text-white rotate-180"
-                          : "bg-neutral-100 text-neutral-600"
+                          ? "text-neutral-900 rotate-180"
+                          : "text-neutral-400 group-hover:text-neutral-700"
                       }`}
                     >
-                      <IconChevronDown className="w-4 h-4" />
+                      <IconChevronDown className="w-5 h-5 stroke-[2.5]" />
                     </div>
                   </button>
 
-                  {/* Accordion Answer Content (Smooth Transition Height & Opacity) */}
+                  {/* Answer Content (Smooth Transition) */}
                   <div
                     className={`transition-all duration-300 ease-in-out overflow-hidden ${
-                      isOpen ? "max-h-60 opacity-100 px-6 pb-5 pt-0" : "max-h-0 opacity-0 px-6 py-0"
+                      isOpen ? "max-h-60 opacity-100 pt-2.5 pb-1" : "max-h-0 opacity-0 py-0"
                     }`}
                   >
-                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed pt-2 border-t border-neutral-100 font-normal">
+                    <p className="text-xs sm:text-sm text-neutral-600 leading-relaxed font-normal">
                       {faq.answer}
                     </p>
                   </div>
