@@ -41,9 +41,9 @@ export default function Footer() {
             <div className="flex flex-wrap items-center gap-3 pt-2">
               <a
                 href="tel:+918788581826"
-                className="inline-flex items-center gap-2 text-xs font-semibold bg-neutral-100 hover:bg-neutral-200 text-neutral-900 px-3.5 py-2 rounded-xl border border-neutral-200 transition-all"
+                className="inline-flex items-center gap-2 text-xs font-bold bg-neutral-900 hover:bg-neutral-800 text-white px-4 py-2.5 rounded-xl shadow-xs transition-all active:scale-95 cursor-pointer"
               >
-                <IconPhone className="w-3.5 h-3.5 text-neutral-900" />
+                <IconPhone className="w-4 h-4 text-white" />
                 <span>+91 87885 81826</span>
               </a>
 
@@ -51,9 +51,9 @@ export default function Footer() {
                 href="https://wa.me/918788581826?text=Hi%20INDIDRIVE,%20I%20want%20to%20rent%20a%20car"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-semibold bg-emerald-50 hover:bg-emerald-100 text-emerald-700 px-3.5 py-2 rounded-xl border border-emerald-200 transition-all"
+                className="inline-flex items-center gap-2 text-xs font-bold bg-emerald-600 hover:bg-emerald-500 text-white px-4 py-2.5 rounded-xl shadow-xs transition-all active:scale-95 cursor-pointer"
               >
-                <IconBrandWhatsapp className="w-3.5 h-3.5 text-emerald-600" />
+                <IconBrandWhatsapp className="w-4 h-4 text-white" />
                 <span>WhatsApp Chat</span>
               </a>
             </div>
