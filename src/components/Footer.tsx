@@ -106,7 +106,7 @@ export default function Footer() {
         {/* BOTTOM SECTION: COPYRIGHT & SOCIAL LINKS */}
         <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-neutral-500 font-normal">
           <div>
-            © {new Date().getFullYear()} INDIDRIVE Rental Services. All rights reserved.
+            © {new Date().getFullYear()} Horizon Rental Services. All rights reserved.
           </div>
 
           {/* Social Links */}
